@@ -10,6 +10,8 @@ $link = mysqli_connect($servername, $username, $password, $dbname);
 if (mysqli_connect_error()) { 
     die("Connection failed: " . mysqli_connect_error());  
 }
+echo '<form> Search for a movie here:  <input type="text" name="search_text"><input type="submit" value="Search">';
+
 
 echo '<table><tr><th>Name of movie</th><th>Year of release</th><th>Genre of movie</th><th>Rating</th></tr>';
 
