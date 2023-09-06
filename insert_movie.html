@@ -1,7 +1,12 @@
 <form action="insertmovie.php" method="POST">
     Name of movie:&emsp;<input type="text" name="mname"><br>
     Year of release:&emsp;<input type="text" name="myear"><br>
-    Genre of movie:&emsp;<input type="text" name="mgenre"><br>
+    Genre of movie:&emsp;<select name="mgenreid">
+        <option value="1">Action/Adventure</option>
+        <option value="2">Comedy</option>
+        <option value="3">Drama</option>
+        <option value="4">Fantasy/Sci-Fi</option>
+      </select><br>
     Rate the movie:&emsp;<input type="text" name="mrating"><br>
     <input type="submit" value="Add">
 </form>
