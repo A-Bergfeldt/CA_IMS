@@ -1,7 +1,7 @@
 <?php
-$servername = "127.0.0.1";
+$servername = "localhost:80";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "things";
 
 // Create connection
@@ -12,6 +12,17 @@ if (mysqli_connect_error()) {
 }
 echo '<form> Search for a movie here:  <input type="text" name="search_text"><input type="submit" value="Search">';
 
+$sql2 = "SELECT mname FROM movies WHERE mname LIKE '%$search%'";
+
+$result = $conn->query($sql2);
+
+if ($result->num_rows > 0){
+while($row = $result->fetch_assoc() ){
+	echo "<tr><td>" . $row["mname"] . "</td><td>" . $row["myear"] . "</td><td>" . $row["mgenre"] . "</td><td>" . $row["mrating"] . "</td></tr>";
+}
+} else {
+	echo "0 records";
+}
 
 echo '<table><tr><th>Name of movie</th><th>Year of release</th><th>Genre of movie</th><th>Rating</th></tr>';
 
