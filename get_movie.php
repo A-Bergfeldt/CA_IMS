@@ -11,14 +11,14 @@ if (mysqli_connect_error()) {
     die("Connection failed: " . mysqli_connect_error());  
 }
 
-echo '<table><tr><th>ID</th><th>Name</th><th>Doman</th><th>Propulsion</th></tr>';
+echo '<table><tr><th>ID</th><th>Name of movie</th><th>Year of release</th><th>Genre of movie</th><th>Rating</th></tr>';
 
-$sql = "SELECT * FROM `animals`";
+$sql = "SELECT * FROM `movies`";
 $result = $link->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo "<tr> <td>" . $row["id"] . "</td><td>" . $row["name"] . "</td><td>" . $row["domain"] . "</td><td>" . $row["propulsion"] . "</td></tr>";
+        echo "<tr> <td>" . $row["id"] . "</td><td>" . $row["mname"] . "</td><td>" . $row["myear"] . "</td><td>" . $row["mgenre"] . "</td><td>" . $row["mrating"] . "</td></tr>";
     }
 } else {
     echo "0 results";

@@ -14,21 +14,22 @@ if (mysqli_connect_error()) {
 }
 
 // Fetch data from POST request
-$id = $_POST['id'];
+$id = $_POST['mid'];
 
-$name = $_POST['name'];
-$domain = $_POST['domain'];
-$propulsion = $_POST['propulsion'];
+$mname = $_POST['mname'];
+$myear = $_POST['myear'];
+$mgenre = $_POST['mgenre'];
+$mrating = $_POST['mrating'];
 
-$sql = "INSERT INTO animals (name, domain, propulsion) VALUES (?, ?, ?)";
+$sql = "INSERT INTO movies (mname, myear, mgenre, mrating) VALUES (?, ?, ?, ?)";
 $stmt = $link->prepare($sql);
 
 // s for string
-$stmt->bind_param("sss", $name, $domain, $propulsion);
+$stmt->bind_param("sss", $mname, $myear, $mgenre, $mrating);
 $result = $stmt->execute();
 
 if ($result) {
-    echo "New record created successfully";
+    echo "New movie record created successfully";
 } else {
     echo "Error: " . $stmt->error;
 }
