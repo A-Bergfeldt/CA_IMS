@@ -14,18 +14,19 @@ if (mysqli_connect_error()) {
 }
 
 // Fetch data from POST request
-$id = $_POST['mid'];
+$mid = $_POST['mid'];
 
 $mname = $_POST['mname'];
 $myear = $_POST['myear'];
-$mgenre = $_POST['mgenre'];
+$mgenreid = $_POST['mgenreid'];
 $mrating = $_POST['mrating'];
 
-$sql = "INSERT INTO movies (mname, myear, mgenre, mrating) VALUES (?, ?, ?, ?)";
+
+$sql = "INSERT INTO movies (mname, myear, mgenreid, mrating) VALUES (?, ?, ?, ?)";
 $stmt = $link->prepare($sql);
 
 // s for string
-$stmt->bind_param("sss", $mname, $myear, $mgenre, $mrating);
+$stmt->bind_param("siii", $mname, $myear, $mgenreid, $mrating);
 $result = $stmt->execute();
 
 if ($result) {
