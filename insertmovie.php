@@ -14,13 +14,12 @@ if (mysqli_connect_error()) {
 }
 
 // Fetch data from POST request
-$mid = $_POST['mid'];
-
 $mname = $_POST['mname'];
 $myear = $_POST['myear'];
 $mgenreid = $_POST['mgenreid'];
 $mrating = $_POST['mrating'];
 
+if ($mrating <=5 and $mrating >=1){
 
 $sql = "INSERT INTO movies (mname, myear, mgenreid, mrating) VALUES (?, ?, ?, ?)";
 $stmt = $link->prepare($sql);
@@ -28,7 +27,7 @@ $stmt = $link->prepare($sql);
 // s for string
 $stmt->bind_param("siii", $mname, $myear, $mgenreid, $mrating);
 $result = $stmt->execute();
-
+}
 if ($result) {
     echo "New movie record created successfully";
 } else {

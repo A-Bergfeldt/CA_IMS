@@ -20,15 +20,18 @@ $sql2 = "SELECT * FROM `movies` INNER JOIN genres ON genres.gid=movies.mgenreid 
 
 $result = $link->query($sql2);
 if (! empty( $search)) {
+    echo '<tr><strong>Search result:</strong></tr>';
+    echo '<table><tr><th>Name of movie</th><th>Year of release</th><th>Genre of movie</th><th>Rating</th></tr>';
     if ($result->num_rows > 0){
     while($row = $result->fetch_assoc() ){
         echo "<tr><td>" . $row["mname"] . "</td><td>" . $row["myear"] . "</td><td>" . $row["mgenre"] . "</td><td>" . $row["mrating"] . "</td></tr><br>";
     }
+    echo '</table><br><br>';
     } else {
         echo "0 records";
     }
 }
-
+echo '<tr><strong>All movies in database:</strong></tr>';
 echo '<table><tr><th>Name of movie</th><th>Year of release</th><th>Genre of movie</th><th>Rating</th></tr>';
 
 $sql = "SELECT * FROM `movies`INNER JOIN genres ON genres.gid=movies.mgenreid;";
